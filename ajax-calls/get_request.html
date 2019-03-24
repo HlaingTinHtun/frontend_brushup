@@ -1,0 +1,53 @@
+<div id="btn">
+  <a href="">Click Here</a>
+</div>
+<div id="output">
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#btn a').click(function(e){
+      var url = 'https://api.myjson.com/bins/1mjba';
+      e.preventDefault();
+
+      // simple call
+        // $('#output').load(url);
+
+        // simple call with params and responses
+        // $('#output').load(url,function(responseText,status,xhr){
+        //   console.log(responseText);
+        //   console.log(status);
+        //   console.log(xhr);
+        //
+        //   //conditional statement depending on the reponse of simple call
+        //   if (status == 'success') {
+        //     $('#output').append('reponse success');
+        //   }
+        //   if (status == 'error') {
+        //     $('#output').append('error msg');
+        //   }
+        // })
+
+      //Ajax call
+      $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'text',
+        success:function(data){
+          data = JSON.parse(data);//if the reqeusted data is not in json format
+          $.each(data,function(key,index){
+            console.log(data);
+            $('#output').append(index.email+'<br>');
+          })
+        },
+        error:function(data){
+          console.log(data);
+          $('#output').append(data.statusText);
+        }
+
+      })
+    })
+  })
+</script>

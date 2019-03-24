@@ -1,0 +1,37 @@
+First Name: <input type="text" name="" id="first">
+Last Name: <input type="text" name="" id="last">
+
+<div id="btn">
+  <a href="">Click Here</a>
+</div>
+<div id="output">
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#btn a').click(function(e){
+      var url = 'test.php';
+      e.preventDefault();
+
+      //Ajax call
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data: {"fname":$("#first").val(),"lname":$("#last").val()},
+        dataType: 'json',
+        success:function(data){
+            console.log(data);
+            $('#output').append(data.fname+' '+data.lname+' '+data.response+'<br>');
+
+        },
+        error:function(data){
+          console.log(data);
+          $('#output').append(data.statusText);
+        }
+
+      })
+    })
+  })
+</script>

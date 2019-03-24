@@ -1,0 +1,40 @@
+Category: <input type="text" name="" id="category" value="nerdy">
+Number Of Items <input type="text" name="" id="number" value="3">
+
+<div id="btn">
+  <a href="">Click Here</a>
+</div>
+<div id="output">
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#btn a').click(function(e){
+      var url = 'http://api.icndb.com/jokes/random/' + $('#number').val();
+      e.preventDefault();
+
+      //Ajax call
+      $.ajax({
+        url: url,
+        type: 'GET',
+        data: {'limitTo':'['+$('#category').val()+']'},
+        dataType: 'json',
+        success:function(data){
+            console.log(data);
+            $.each(data.value,function(key,index){
+              console.log(data);
+              $('#output').append(index.joke+'<br>');
+            })
+
+        },
+        error:function(data){
+          console.log(data);
+          $('#output').append(data.statusText);
+        }
+
+      })
+    })
+  })
+</script>
