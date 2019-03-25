@@ -1,7 +1,39 @@
 # Synchronous Communication
-If two processes are running Synchronously, it means that second process will wait until or unless first process complete.
+If two processes are running `Synchronously`, it means that second process will wait until or unless first process complete.
 Synchronous Transmission is efficient, reliable and is used for transferring a large amount of data. It provides real-time communication between connected devices. Chat Rooms, Video Conferencing, telephonic conversations, as well as face to face interactions, are some of the examples of Synchronous Transmission.
 
+## Sample Synchronous Ajax Request
+```
+function WhatTimeIsIt() {
+        $.ajax({
+            async: false,
+            type: "POST",
+            url: "showing-time-url",
+            data: '{location: "Yangon" }',
+            dataType: "json",
+            success: function (response) {
+                ....
+            }
+        });
+    }
+```
+
 # Asynchronous Communication
-If two processes are running Asynchronously, it means second process will not wait for second process result and will be executed.
+If two processes are running `Asynchronously`, it means second process will not wait for second process result and will be executed.
 It is simple, fast, economical and does not require a 2-way communication. Letters, emails, forums, televisions and radios are some of the examples of Asynchronous Transmission.
+
+## Sample Asynchronous Ajax Request
+```
+function WhatTimeIsIt() {
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "showing-time-url",
+            data: '{location: "Yangon" }',
+            dataType: "json",
+            success: function (response) {
+                ....
+            }
+        });
+    }
+```
