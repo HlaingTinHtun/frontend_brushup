@@ -1,2 +1,2 @@
-# jquery_ajax_brushup
-Revisioning jquery and ajax by writing some fundamental codes. 
+# frontend_brushup
+Revisioning jquery, ajax, Html and css by writing some basic work flows.
